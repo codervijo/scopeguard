@@ -1,0 +1,41 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
+
+const {
+  title = "ScopeGuard",
+  description = "Pre-install security for AI-era plugins.",
+  ogTitle,
+  ogDescription,
+} = Astro.props;
+
+// Pre-hydration theme init to avoid flash. Defaults to dark.
+// Ported from genai `src/routes/__root.tsx` RootShell.
+const themeInit = `(function(){try{var t=localStorage.getItem('scopeguard-theme')||'dark';var r=document.documentElement;if(t==='dark')r.classList.add('dark');r.style.colorScheme=t;}catch(e){document.documentElement.classList.add('dark');}})();`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="ScopeGuard" />
+    <meta property="og:title" content={ogTitle ?? title} />
+    <meta property="og:description" content={ogDescription ?? description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <script is:inline set:html={themeInit} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,8 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ReviewPage from "../../components/app/ReviewPage.tsx";
+---
+
+<Layout title="Review Queue · ScopeGuard" description="Pending plugin install requests waiting on a security decision.">
+  <ReviewPage client:load />
+</Layout>

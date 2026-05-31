@@ -1,8 +1,15 @@
 ---
-// src/pages/index.astro
+import "../styles/global.css";
+import Landing from "../components/Landing.tsx";
+
 const site = "https://scopeguard.xyz";
-const title = "scopeguard.xyz";
-const description = "<fill in: 1-2 sentence value prop for SEO description>";
+const title = "ScopeGuard — Stop risky AI plugins before they touch company data";
+const description =
+  "ScopeGuard scans browser extensions, OAuth apps, email add-ons, and IDE plugins before installation and enforces policy on permissions, scopes, publisher identity, and version drift.";
+
+// Pre-hydration theme init to avoid flash. Defaults to dark.
+// Ported from genai `src/routes/__root.tsx` RootShell.
+const themeInit = `(function(){try{var t=localStorage.getItem('scopeguard-theme')||'dark';var r=document.documentElement;if(t==='dark')r.classList.add('dark');r.style.colorScheme=t;}catch(e){document.documentElement.classList.add('dark');}})();`;
 ---
 <!doctype html>
 <html lang="en">
@@ -16,43 +23,42 @@ const description = "<fill in: 1-2 sentence value prop for SEO description>";
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content="ScopeGuard — Pre-install security for AI-era plugins" />
+    <meta
+      property="og:description"
+      content="Know which AI tools can read company data before employees install them. Enterprise plugin governance for browsers, OAuth, email, and IDEs."
+    />
     <meta property="og:url" content={site} />
-    <meta property="og:site_name" content="scopeguard.xyz" />
+    <meta property="og:site_name" content="ScopeGuard" />
 
     <!-- Twitter card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
-    <!-- JSON-LD structured data: Organization + WebSite (static; domain
-         is known at scaffold time. Update description by hand if needed.) -->
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://scopeguard.xyz/#organization",
-      "name": "scopeguard.xyz",
-      "url": "https://scopeguard.xyz/"
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://scopeguard.xyz/#website",
-      "url": "https://scopeguard.xyz/",
-      "name": "scopeguard.xyz",
-      "publisher": { "@id": "https://scopeguard.xyz/#organization" }
-    }
-  ]
-}
-    </script>
+    <!-- JSON-LD structured data: Organization + WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://scopeguard.xyz/#organization",
+          "name": "ScopeGuard",
+          "url": "https://scopeguard.xyz/"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://scopeguard.xyz/#website",
+          "url": "https://scopeguard.xyz/",
+          "name": "ScopeGuard",
+          "publisher": { "@id": "https://scopeguard.xyz/#organization" }
+        }
+      ]
+    })} />
+
+    <script is:inline set:html={themeInit} />
   </head>
   <body>
-    <main>
-      <h1>{title}</h1>
-      <p>Scaffolded via <code>portfolio new bootstrap</code>.</p>
-    </main>
+    <Landing client:load />
   </body>
 </html>

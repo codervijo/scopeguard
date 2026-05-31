@@ -1,0 +1,8 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AlertsPage from "../../components/app/AlertsPage.tsx";
+---
+
+<Layout title="Alerts · ScopeGuard" description="Active alerts across install attempts, scopes, permissions, and publishers.">
+  <AlertsPage client:load />
+</Layout>

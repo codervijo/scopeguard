@@ -1,0 +1,8 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import InventoryPage from "../../components/app/InventoryPage.tsx";
+---
+
+<Layout title="Plugin Inventory · ScopeGuard" description="Searchable inventory of every browser, OAuth, email, and IDE plugin.">
+  <InventoryPage client:load />
+</Layout>

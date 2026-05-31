@@ -1,0 +1,8 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PoliciesPage from "../../components/app/PoliciesPage.tsx";
+---
+
+<Layout title="Policies · ScopeGuard" description="Rules that decide what gets allowed, blocked, or sent to review.">
+  <PoliciesPage client:load />
+</Layout>
