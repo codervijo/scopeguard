@@ -16,8 +16,7 @@ framework = "astro"
 
 # Tracked todos for scopeguard.xyz. status: "done" | "open".
 [[todo]]
-status = "open"
-priority = "high"
+status = "done"
 task = "Fill in [content] block (site_type, primary_keyword, icp, …)"
 
 [[todo]]
@@ -39,11 +38,19 @@ task = "Confirm GSC verification + sitemap submitted (re-run deploy if it timed 
 # Declarative content identity for this site.
 # Authored by the human; consumed by rankmill to generate drafts and run audits.
 # Leave fields empty until you have a deliberate answer. Empty is better than wrong.
-site_type = ""            # e.g. "legal-compliance", "tool", "directory", "blog", "b2c"
-primary_keyword = ""      # the one phrase this site should rank for
-secondary_keywords = []   # 3-8 supporting phrases
-icp = ""                  # ideal customer profile — one sentence, specific role + context
-urgency_trigger = ""      # what makes the reader act now (deadline, penalty, pain)
-penalty = ""              # cost of inaction, in their terms (dollars, risk, time)
-tone = ""                 # e.g. "direct, technical, no fluff" or "warm, plainspoken"
-law = ""                  # statute or regulation if applicable, else empty
+site_type = "tool"
+primary_keyword = "AI plugin governance"
+secondary_keywords = [
+    "OAuth scopes",
+    "browser extension permissions",
+    "Chrome MDM integration",
+    "Microsoft 365 integration",
+    "SOC 2 compliance",
+    "FedRAMP compliance",
+    "shadow AI governance",
+]
+icp = "Mid-market to enterprise (500–50k employees) with active AI adoption, a CASB or browser management system in place, and a compliance mandate (SOC 2, FedRAMP, industry-specific data handling rules). They've already seen employees install ChatGPT, Claude, or Copilot extensions without approval and need a lightweight enforcement layer that doesn't require app wrapping or network tunneling."
+urgency_trigger = "Rapid, uncontrolled employee installs of AI plugins (e.g., ChatGPT, Claude, Copilot) creating immediate data‑exposure and audit risk"
+penalty = "Data exposure and non‑compliance (failed SOC 2/FedRAMP audits), plus increased risk of unauthorized access and policy breaches"
+tone = "technical, peer-to-peer, no marketing jargon"
+law = "SOC 2, FedRAMP"
