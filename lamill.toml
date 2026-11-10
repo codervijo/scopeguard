@@ -11,6 +11,10 @@ custom_domains = [
     "scopeguard.xyz",
 ]
 
+[index]
+indexnow_key = "73104a77341dab61fcf894bfe4773eaf"
+indexnow_enabled = true
+
 [stack]
 framework = "astro"
 
